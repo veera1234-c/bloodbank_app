@@ -11,7 +11,9 @@ class MyHomePage extends StatelessWidget {
               color: Color(0xffFA4848),
               child: SingleChildScrollView(
                   child: Column(
-                children: onboardingData.map(),
+                children: onboardingData.map(
+                  (onboardingSingleData) => 
+                ),
               )))),
     );
   }
