@@ -11,9 +11,14 @@ class MyHomePage extends StatelessWidget {
               color: Color(0xffFA4848),
               child: SingleChildScrollView(
                   child: Column(
-                children: onboardingData.map(
-                  (onboardingSingleData) => 
-                ),
+                children: onboardingData.map((onboardingSingleData) => Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.asset(
+                          onboardingSingleData("image_url"),
+                        ),
+                      ],
+                    )),
               )))),
     );
   }
