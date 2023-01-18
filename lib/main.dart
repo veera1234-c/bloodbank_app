@@ -1,4 +1,4 @@
-import 'package:bloodbank_app/screens/onboarding_data.dart';
+import 'package:bloodbank_app/screens/onboarding.dart';
 import 'package:flutter/material.dart';
 
 void main() {
