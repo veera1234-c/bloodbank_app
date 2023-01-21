@@ -12,7 +12,10 @@ class MyHomePage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                child: Text("Enter your mobile number"),
+                child: Text(
+                  "Enter your mobile number",
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(60, 14, 176, 17),
