@@ -22,6 +22,7 @@ class MyHomePage extends StatelessWidget {
                         "Enter your mobile number",
                         style: TextStyle(
                           fontSize: 18,
+                          fontFamily: 'PoorStory',
                         ),
                       ),
                     ),
