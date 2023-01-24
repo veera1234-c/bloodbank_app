@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.red,
+        primarySwatch: Colors.red,
       ),
       title: 'Blood Bank App',
       home: const MyHomePage(),
