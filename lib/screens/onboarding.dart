@@ -1,8 +1,8 @@
 import 'package:bloodbank_app/constants/onboarding_data.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class MyOnboardingScreen extends StatelessWidget {
+  const MyOnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
