@@ -6,8 +6,13 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Splash Screen"),
+      ),
       body: SafeArea(
-        child: Container(),
+        child: Center(
+          child: Image.asset("bloodbank.png"),
+        ),
       ),
     );
   }
