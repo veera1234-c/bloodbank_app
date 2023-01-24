@@ -1,3 +1,4 @@
+import 'package:bloodbank_app/onboarding/Onboarding0.dart';
 import 'package:bloodbank_app/screens/splashscreen.dart';
 import 'package:bloodbank_app/screens/onboarding.dart';
 import 'package:bloodbank_app/screens/mobilenumber.dart';
@@ -15,7 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Blood Bank App',
-      home: const MyOnboardingScreen(),
+      //home: const MyHomePage(),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => SplashScreen(),
+        "/Onboarding0": (context) => MyOnboardingPage(),
+      },
     );
   }
 }

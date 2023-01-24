@@ -1,7 +1,8 @@
+import 'package:bloodbank_app/onboarding/Onboarding0.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +11,14 @@ class MyHomePage extends StatelessWidget {
         title: Text("Splash Screen"),
       ),
       body: SafeArea(
-        child: Center(
-          child: Image.asset("bloodbank.png"),
+        child: InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: ((context) => MyOnboardingPage())));
+          },
+          child: Center(
+            child: Image.asset("bloodbank.png"),
+          ),
         ),
       ),
     );

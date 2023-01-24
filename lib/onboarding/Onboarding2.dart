@@ -1,0 +1,30 @@
+import 'package:bloodbank_app/constants/onboarding_data.dart';
+import 'package:bloodbank_app/onboarding/Onboarding2.dart';
+import 'package:bloodbank_app/screens/mobilenumber.dart';
+import 'package:bloodbank_app/widgets/onboardingwidgets.dart';
+import 'package:flutter/material.dart';
+
+class OnboardingPage2 extends StatelessWidget {
+  const OnboardingPage2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: InkWell(
+          onTap: () => {
+            Navigator.push(context,
+                MaterialPageRoute(builder: ((context) => MobilenumberScreen())))
+          },
+          child: Container(
+            color: Colors.red,
+            child: onboardingWidget(
+              onboardingData[2]["text"]!,
+              imageUrl: onboardingData[2]["image_url"],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
