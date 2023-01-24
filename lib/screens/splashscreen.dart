@@ -6,6 +6,10 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Splash Screen"),
+      ),
+      //floatingActionButton: FloatingActionButton(),
       body: SafeArea(
         child: Center(
           child: Image.asset("bloodbank.png"),
