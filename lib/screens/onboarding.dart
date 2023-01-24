@@ -35,5 +35,4 @@ class MyHomePage extends StatelessWidget {
       ),
     ));
   }
-  //good to know
 }
