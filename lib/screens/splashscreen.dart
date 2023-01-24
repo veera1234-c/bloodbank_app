@@ -9,7 +9,6 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Splash Screen"),
       ),
-      //floatingActionButton: FloatingActionButton(),
       body: SafeArea(
         child: Center(
           child: Image.asset("bloodbank.png"),
