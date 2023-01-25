@@ -11,16 +11,21 @@ class OnboardingPage2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: InkWell(
-          onTap: () => {
-            Navigator.push(context,
-                MaterialPageRoute(builder: ((context) => MobilenumberScreen())))
-          },
-          child: Container(
-            color: Colors.red,
-            child: onboardingWidget(
-              onboardingData[2]["text"]!,
-              imageUrl: onboardingData[2]["image_url"],
+        child: Container(
+          width: double.infinity,
+          child: InkWell(
+            onTap: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => MobilenumberScreen())))
+            },
+            child: Container(
+              color: Colors.red,
+              child: onboardingWidget(
+                onboardingData[2]["text"]!,
+                imageUrl: onboardingData[2]["image_url"],
+              ),
             ),
           ),
         ),

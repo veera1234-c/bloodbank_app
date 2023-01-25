@@ -10,9 +10,8 @@ class MobilenumberScreen extends StatelessWidget {
       body: SafeArea(
           child: Container(
         width: double.infinity,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+        child: Column(mainAxisAlignment: MainAxisAlignment.center,
+            //crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 child: Column(
@@ -28,18 +27,45 @@ class MobilenumberScreen extends StatelessWidget {
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 15),
-                      padding: EdgeInsets.fromLTRB(60, 14, 176, 17),
-                      width: 265,
+                      padding: EdgeInsets.fromLTRB(60, 14, 60, 17),
+                      width: 361,
                       height: 53,
-                      child: Text(
-                        "+91 ",
-                        style: TextStyle(
-                          color: MyColors.redPrimary,
-                        ),
-                      ),
                       decoration: BoxDecoration(
                         border: Border.all(width: 1, color: Colors.black),
                         borderRadius: BorderRadius.circular(18),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "+91 ",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: MyColors.redPrimary,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            width: 180,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                // prefix: Text(
+                                //   '+91',
+                                //   style: TextStyle(
+                                //     fontSize: 20,
+                                //     color: MyColors.redPrimary,
+                                //   ),
+                                // ),
+                                border: InputBorder.none,
+
+                                hintText: "Enter your number here",
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     )
                   ],
@@ -48,21 +74,31 @@ class MobilenumberScreen extends StatelessWidget {
               SizedBox(
                 height: 67,
               ),
-              Container(
-                height: 53,
-                width: 263,
-                decoration: BoxDecoration(
-                  color: MyColors.redPrimary,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Center(
-                    child: Text(
+
+              ElevatedButton(
+                onPressed: () => {},
+                child: const Text(
                   "Get OTP",
                   style: TextStyle(
                     color: Colors.white,
                   ),
-                )),
-              )
+                ),
+              ),
+              // Container(
+              //   height: 53,
+              //   width: 263,
+              //   decoration: BoxDecoration(
+              //     color: MyColors.redPrimary,
+              //     borderRadius: BorderRadius.circular(4),
+              //   ),
+              //   child: Center(
+              //       child: Text(
+              //     "Get OTP",
+              //     style: TextStyle(
+              //       color: Colors.white,
+              //     ),
+              //   )),
+              // )
             ]),
       )),
     );
