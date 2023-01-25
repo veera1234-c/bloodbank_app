@@ -75,12 +75,26 @@ class MobilenumberScreen extends StatelessWidget {
                 height: 67,
               ),
 
-              ElevatedButton(
-                onPressed: () => {},
-                child: const Text(
-                  "Get OTP",
-                  style: TextStyle(
-                    color: Colors.white,
+              SizedBox(
+                height: 53,
+                width: 263,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: MyColors.redPrimary,
+                    //side: BorderSide(width:3, color:Colors.brown), //border width and color
+
+                    shape: RoundedRectangleBorder(
+                        //to set border radius to button
+                        borderRadius: BorderRadius.circular(4)),
+                    //elevation: 3,
+                    //padding: EdgeInsets.all(20) //content padding inside button
+                  ),
+                  onPressed: () => {},
+                  child: const Text(
+                    "Get OTP",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
