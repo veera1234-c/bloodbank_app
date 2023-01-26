@@ -1,6 +1,8 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/routes.dart';
+
 class MobilenumberScreen extends StatelessWidget {
   const MobilenumberScreen({super.key});
 
@@ -95,7 +97,7 @@ class MobilenumberScreen extends StatelessWidget {
                     if (mobilenumbertextcontroller.text.isNotEmpty)
                       {
                         print(mobilenumbertextcontroller.text),
-                        Navigator.pushNamed(context, "/otpScreen"),
+                        Navigator.pushNamed(context, Routes.otpScreen),
                       }
                   },
                   child: const Text(
