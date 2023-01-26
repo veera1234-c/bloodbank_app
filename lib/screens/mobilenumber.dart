@@ -6,6 +6,7 @@ class MobilenumberScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController mobilenumbertextcontroller = TextEditingController();
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -51,6 +52,7 @@ class MobilenumberScreen extends StatelessWidget {
                           Container(
                             width: 180,
                             child: TextField(
+                              controller: mobilenumbertextcontroller,
                               decoration: InputDecoration(
                                 // prefix: Text(
                                 //   '+91',
@@ -89,7 +91,13 @@ class MobilenumberScreen extends StatelessWidget {
                     //elevation: 3,
                     //padding: EdgeInsets.all(20) //content padding inside button
                   ),
-                  onPressed: () => {},
+                  onPressed: () => {
+                    if (mobilenumbertextcontroller.text.isNotEmpty)
+                      {
+                        print(mobilenumbertextcontroller.text),
+                        Navigator.pushNamed(context, "/otpScreen")
+                      }
+                  },
                   child: const Text(
                     "Get OTP",
                     style: TextStyle(

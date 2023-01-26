@@ -1,4 +1,5 @@
 import 'package:bloodbank_app/onboarding/Onboarding0.dart';
+import 'package:bloodbank_app/screens/OtpScreen.dart';
 import 'package:bloodbank_app/screens/splashscreen.dart';
 import 'package:bloodbank_app/screens/onboarding.dart';
 import 'package:bloodbank_app/screens/mobilenumber.dart';
@@ -15,12 +16,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+                fixedSize: MaterialStatePropertyAll(Size(265, 53)),
+                backgroundColor: MaterialStatePropertyAll(Color(0xA8FF0E0E)))),
+      ),
       title: 'Blood Bank App',
       //home: const MyHomePage(),
       initialRoute: "/",
       routes: {
         "/": (context) => SplashScreen(),
         "/Onboarding0": (context) => MyOnboardingPage(),
+        "/otpScreen": (context) => OtpScreen(),
       },
     );
   }
