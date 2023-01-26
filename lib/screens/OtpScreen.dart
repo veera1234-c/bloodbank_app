@@ -10,21 +10,34 @@ class OtpScreen extends StatelessWidget {
     OtpFieldController otpController = OtpFieldController();
     return Scaffold(
       body: Container(
-        child: OTPTextField(
-            controller: otpController,
-            length: 5,
-            width: MediaQuery.of(context).size.width,
-            textFieldAlignment: MainAxisAlignment.spaceAround,
-            fieldWidth: 45,
-            fieldStyle: FieldStyle.box,
-            outlineBorderRadius: 15,
-            style: TextStyle(fontSize: 17),
-            onChanged: (pin) {
-              print("Changed: " + pin);
-            },
-            onCompleted: (pin) {
-              print("Completed: " + pin);
-            }),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            OTPTextField(
+              controller: otpController,
+              onChanged: (pin) {
+                print("Changed: " + pin);
+              },
+              length: 5,
+              // onChanged: (value) => print(value),
+              width: MediaQuery.of(context).size.width,
+              fieldWidth: 80,
+              style: TextStyle(fontSize: 17),
+              otpFieldStyle: OtpFieldStyle(
+                  backgroundColor: Colors.blue, borderColor: Colors.green),
+              textFieldAlignment: MainAxisAlignment.spaceAround,
+              fieldStyle: FieldStyle.underline,
+              onCompleted: (pin) {
+                print("Completed: " + pin);
+                // Navigator.pushNamed(
+                //   context,
+                //   Routes.signUpScreen,
+                // );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
