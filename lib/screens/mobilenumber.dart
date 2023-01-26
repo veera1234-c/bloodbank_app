@@ -95,7 +95,7 @@ class MobilenumberScreen extends StatelessWidget {
                     if (mobilenumbertextcontroller.text.isNotEmpty)
                       {
                         print(mobilenumbertextcontroller.text),
-                        Navigator.pushNamed(context, "/otpScreen")
+                        Navigator.pushNamed(context, "/otpScreen"),
                       }
                   },
                   child: const Text(
