@@ -1,6 +1,8 @@
 import 'package:bloodbank_app/onboarding/Onboarding0.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/routes.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -13,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(
       Duration(seconds: 3),
-      () => Navigator.pushNamed(context, "/Onboarding0"),
+      () => Navigator.pushNamed(context, Routes.onboardingScreen),
     );
     super.initState();
   }
