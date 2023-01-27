@@ -123,6 +123,11 @@ class MobilenumberScreen extends StatelessWidget {
               //     ),
               //   )),
               // )
+              TextButton(
+                  onPressed: () => {
+                        Navigator.pushNamed(context, Routes.signUpScreen),
+                      },
+                  child: Text("Sign UP")),
             ]),
       )),
     );
