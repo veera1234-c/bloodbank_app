@@ -35,68 +35,71 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           color: MyColors.redPrimary,
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Sign Up",
-                    style: TextStyle(
-                      fontFamily: "PoorStory",
-                      fontSize: 36,
-                      color: Colors.white,
-                    )),
-                textFieldWithLabel(
-                  "Your Name",
-                  userDataFieldKey: "name",
-                ),
-                textFieldWithLabel(
-                  "Date of Birth",
-                  userDataFieldKey: "dateOfBirth",
-                ),
-                textFieldWithLabel(
-                  "Age",
-                  userDataFieldKey: "age",
-                ),
-                textFieldWithLabel(
-                  "Prevailing Health Conditions",
-                  userDataFieldKey: "healthConditions",
-                ),
-                textFieldWithLabel(
-                  "Blood Group",
-                  userDataFieldKey: "bloodGroup",
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      // Validate returns true if the form is valid, or false otherwise.
-                      if (_formKey.currentState!.validate()) {
-                        print("Valid");
-                        _formKey.currentState!.save();
-                        Navigator.pushNamed(context, Routes.home);
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          //to set border radius to button
-                          borderRadius: BorderRadius.circular(11)),
-                    ),
-                    child: Text(
-                      'REGISTER FOR CHECKUP',
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Sign Up",
                       style: TextStyle(
                         fontFamily: "PoorStory",
-                        fontSize: 16,
-                        color: MyColors.redPrimary,
+                        fontSize: 36,
+                        color: Colors.white,
+                      )),
+                  textFieldWithLabel(
+                    "Your Name",
+                    userDataFieldKey: "name",
+                  ),
+                  textFieldWithLabel(
+                    "Date of Birth",
+                    userDataFieldKey: "dateOfBirth",
+                  ),
+                  textFieldWithLabel(
+                    "Age",
+                    userDataFieldKey: "age",
+                  ),
+                  textFieldWithLabel(
+                    "Prevailing Health Conditions",
+                    userDataFieldKey: "healthConditions",
+                  ),
+                  textFieldWithLabel(
+                    "Blood Group",
+                    userDataFieldKey: "bloodGroup",
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        // Validate returns true if the form is valid, or false otherwise.
+                        if (_formKey.currentState!.validate()) {
+                          print("Valid");
+                          _formKey.currentState!.save();
+                          Navigator.pushNamed(context, Routes.home);
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            //to set border radius to button
+                            borderRadius: BorderRadius.circular(11)),
+                      ),
+                      child: Text(
+                        'REGISTER FOR CHECKUP',
+                        style: TextStyle(
+                          fontFamily: "PoorStory",
+                          fontSize: 16,
+                          color: MyColors.redPrimary,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
