@@ -1,18 +1,37 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+  // Map<String, String> formData = {
+  //   "name": "",
+  //   "dateOfBirth": "",
+  // };
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final _formKey = GlobalKey<FormState>();
+  late SharedPreferences prefs;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    onInit();
+    super.initState();
+  }
+
+  // declaring a function so that the initState can call it without asynchrony
+  void onInit() async {
+    prefs = await SharedPreferences.getInstance();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    Map<String, String> formData = {
-      "name": "",
-      "dateOfBirth": "",
-    };
-
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -28,17 +47,32 @@ class SignUpScreen extends StatelessWidget {
                       fontSize: 36,
                       color: Colors.white,
                     )),
-                textFieldWithLabel("Your Name"),
-                textFieldWithLabel("Date of Birth"),
-                textFieldWithLabel("Age"),
-                textFieldWithLabel("Prevailing Health Conditions"),
-                textFieldWithLabel("Blood Group"),
+                textFieldWithLabel(
+                  "Your Name",
+                  userDataFieldKey: "name",
+                ),
+                textFieldWithLabel(
+                  "Date of Birth",
+                  userDataFieldKey: "dateOfBirth",
+                ),
+                textFieldWithLabel(
+                  "Age",
+                  userDataFieldKey: "age",
+                ),
+                textFieldWithLabel(
+                  "Prevailing Health Conditions",
+                  userDataFieldKey: "healthConditions",
+                ),
+                textFieldWithLabel(
+                  "Blood Group",
+                  userDataFieldKey: "bloodGroup",
+                ),
                 SizedBox(
                   height: 40,
                 ),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       // Validate returns true if the form is valid, or false otherwise.
                       if (_formKey.currentState!.validate()) {
                         print("Valid");
@@ -70,7 +104,7 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  Widget textFieldWithLabel(String title) {
+  Widget textFieldWithLabel(String title, {required String userDataFieldKey}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -95,8 +129,12 @@ class SignUpScreen extends StatelessWidget {
             ),
             style: TextStyle(color: Colors.white),
             onSaved: (newValue) => {
-              // formData["name"] =
-              print(newValue)
+              newValue != null && newValue.isNotEmpty
+                  ? prefs.setString(
+                      userDataFieldKey,
+                      newValue,
+                    )
+                  : prefs.setString(userDataFieldKey, ""),
             },
             validator: (value) {
               if (value == null || value.isEmpty) {

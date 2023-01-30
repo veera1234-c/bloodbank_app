@@ -35,10 +35,10 @@ class MyApp extends StatelessWidget {
                 backgroundColor: MaterialStatePropertyAll(Color(0xA8FF0E0E)))),
       ),
       title: 'Blood Bank App',
-      home: SplashScreen(),
-      //initialRoute: Routes.otpScreen,
+      //home: SplashScreen(),
+      initialRoute: Routes.splashScreen,
       routes: {
-        // "/": (context) => SplashScreen(),
+        Routes.splashScreen: (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => MyOnboardingPage(),
         Routes.onboarding1Screen: (context) => OnboardingPage1(),
         Routes.onboarding2Screen: (context) => OnboardingPage2(),
