@@ -1,5 +1,6 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
+import 'package:bloodbank_app/constants/sharedPreferences.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -34,10 +35,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          color: MyColors.redPrimary,
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height -
+                MediaQuery.of(context).padding.top,
+            color: MyColors.redPrimary,
             child: Form(
               key: _formKey,
               child: Column(
@@ -51,23 +53,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       )),
                   textFieldWithLabel(
                     "Your Name",
-                    userDataFieldKey: "name",
+                    userDataFieldKey: SharedPrefsConstant.name.toString(),
                   ),
                   textFieldWithLabel(
                     "Date of Birth",
-                    userDataFieldKey: "dateOfBirth",
+                    userDataFieldKey:
+                        SharedPrefsConstant.dateOfBirth.toString(),
                   ),
                   textFieldWithLabel(
                     "Age",
-                    userDataFieldKey: "age",
+                    userDataFieldKey: SharedPrefsConstant.age.toString(),
                   ),
                   textFieldWithLabel(
                     "Prevailing Health Conditions",
-                    userDataFieldKey: "healthConditions",
+                    userDataFieldKey:
+                        SharedPrefsConstant.healthConditions.toString(),
                   ),
                   textFieldWithLabel(
                     "Blood Group",
-                    userDataFieldKey: "bloodGroup",
+                    userDataFieldKey: SharedPrefsConstant.bloodGroup.toString(),
                   ),
                   SizedBox(
                     height: 40,
@@ -138,6 +142,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       newValue,
                     )
                   : prefs.setString(userDataFieldKey, ""),
+              print(
+                  " $userDataFieldKey is ${prefs.getString(userDataFieldKey)}"),
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
