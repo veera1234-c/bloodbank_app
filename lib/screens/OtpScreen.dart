@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
+import 'package:bloodbank_app/constants/routes.dart';
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});
@@ -35,6 +36,12 @@ class OtpScreen extends StatelessWidget {
                 //   Routes.signUpScreen,
                 // );
               },
+            ),
+            ElevatedButton(
+              onPressed: () => {
+                Navigator.pushNamed(context, Routes.home),
+              },
+              child: Text("Go to home"),
             ),
           ],
         ),

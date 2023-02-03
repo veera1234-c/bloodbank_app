@@ -1,12 +1,26 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class MobilenumberScreen extends StatelessWidget {
+import '../constants/routes.dart';
+
+class MobilenumberScreen extends StatefulWidget {
   const MobilenumberScreen({super.key});
 
   @override
+  State<MobilenumberScreen> createState() => _MobilenumberScreenState();
+}
+
+class _MobilenumberScreenState extends State<MobilenumberScreen> {
+  @override
   Widget build(BuildContext context) {
     TextEditingController mobilenumbertextcontroller = TextEditingController();
+    Future<void> _signUp() async {
+      if (mobilenumbertextcontroller.text.isNotEmpty) {
+        print(mobilenumbertextcontroller.text);
+        //Navigator.pushNamed(context, Routes.otpScreen);
+      }
+    }
+
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -91,13 +105,7 @@ class MobilenumberScreen extends StatelessWidget {
                     //elevation: 3,
                     //padding: EdgeInsets.all(20) //content padding inside button
                   ),
-                  onPressed: () => {
-                    if (mobilenumbertextcontroller.text.isNotEmpty)
-                      {
-                        print(mobilenumbertextcontroller.text),
-                        Navigator.pushNamed(context, "/otpScreen"),
-                      }
-                  },
+                  onPressed: () => _signUp,
                   child: const Text(
                     "Get OTP",
                     style: TextStyle(
@@ -121,6 +129,11 @@ class MobilenumberScreen extends StatelessWidget {
               //     ),
               //   )),
               // )
+              TextButton(
+                  onPressed: () => {
+                        Navigator.pushNamed(context, Routes.signUpScreen),
+                      },
+                  child: Text("Sign UP")),
             ]),
       )),
     );
