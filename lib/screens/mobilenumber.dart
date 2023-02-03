@@ -3,12 +3,24 @@ import 'package:flutter/material.dart';
 
 import '../constants/routes.dart';
 
-class MobilenumberScreen extends StatelessWidget {
+class MobilenumberScreen extends StatefulWidget {
   const MobilenumberScreen({super.key});
 
   @override
+  State<MobilenumberScreen> createState() => _MobilenumberScreenState();
+}
+
+class _MobilenumberScreenState extends State<MobilenumberScreen> {
+  @override
   Widget build(BuildContext context) {
     TextEditingController mobilenumbertextcontroller = TextEditingController();
+    Future<void> _signUp() async {
+      if (mobilenumbertextcontroller.text.isNotEmpty) {
+        print(mobilenumbertextcontroller.text);
+        //Navigator.pushNamed(context, Routes.otpScreen);
+      }
+    }
+
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -93,13 +105,7 @@ class MobilenumberScreen extends StatelessWidget {
                     //elevation: 3,
                     //padding: EdgeInsets.all(20) //content padding inside button
                   ),
-                  onPressed: () => {
-                    if (mobilenumbertextcontroller.text.isNotEmpty)
-                      {
-                        print(mobilenumbertextcontroller.text),
-                        Navigator.pushNamed(context, Routes.otpScreen),
-                      }
-                  },
+                  onPressed: () => _signUp,
                   child: const Text(
                     "Get OTP",
                     style: TextStyle(
