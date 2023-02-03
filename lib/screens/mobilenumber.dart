@@ -1,7 +1,9 @@
+import 'dart:developer';
 import 'package:bloodbank_app/constants/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import '../constants/routes.dart';
+import '../utils/screen_utils.dart';
 
 class MobilenumberScreen extends StatefulWidget {
   const MobilenumberScreen({super.key});
@@ -11,16 +13,29 @@ class MobilenumberScreen extends StatefulWidget {
 }
 
 class _MobilenumberScreenState extends State<MobilenumberScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
+
+  TextEditingController mobilenumbertextcontroller = TextEditingController();
+
+  Future<void> _login() async {
+    if (mobilenumbertextcontroller.text.isNotEmpty) {
+      print(mobilenumbertextcontroller.text);
+      //Navigator.pushNamed(context, Routes.otpScreen);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Utilities.logger.i("mobile_number.dart");
+    _auth.signInWithProvider(googleAuthProvider).then((value) {
+      log("value is $value");
+    }); //for android
+  }
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController mobilenumbertextcontroller = TextEditingController();
-    Future<void> _signUp() async {
-      if (mobilenumbertextcontroller.text.isNotEmpty) {
-        print(mobilenumbertextcontroller.text);
-        //Navigator.pushNamed(context, Routes.otpScreen);
-      }
-    }
-
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -105,7 +120,7 @@ class _MobilenumberScreenState extends State<MobilenumberScreen> {
                     //elevation: 3,
                     //padding: EdgeInsets.all(20) //content padding inside button
                   ),
-                  onPressed: () => _signUp,
+                  onPressed: () => _login,
                   child: const Text(
                     "Get OTP",
                     style: TextStyle(

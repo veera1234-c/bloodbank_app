@@ -1,6 +1,8 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/constants/sharedPreferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,6 +20,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final _formKey = GlobalKey<FormState>();
   late SharedPreferences prefs;
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+  Future<void> addDataToFireStore() async {
+    await db.collection("users").add({"name": "Hrithik"}).then(
+      (DocumentReference doc) =>
+          print('DocumentSnapshot added with ID: ${doc.id}'),
+    );
+  }
+
+  Future<void> addDataToSharedPrefs() async {
+    // Validate returns true if the form is valid, or false otherwise.
+    if (_formKey.currentState!.validate()) {
+      print("Valid");
+      _formKey.currentState!.save();
+      Navigator.pushNamed(context, Routes.home);
+    }
+  }
 
   @override
   void initState() {
@@ -78,14 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   Center(
                     child: ElevatedButton(
-                      onPressed: () async {
-                        // Validate returns true if the form is valid, or false otherwise.
-                        if (_formKey.currentState!.validate()) {
-                          print("Valid");
-                          _formKey.currentState!.save();
-                          Navigator.pushNamed(context, Routes.home);
-                        }
-                      },
+                      onPressed: addDataToSharedPrefs,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -94,6 +106,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       child: Text(
                         'REGISTER FOR CHECKUP',
+                        style: TextStyle(
+                          fontFamily: "PoorStory",
+                          fontSize: 16,
+                          color: MyColors.redPrimary,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: addDataToFireStore,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            //to set border radius to button
+                            borderRadius: BorderRadius.circular(11)),
+                      ),
+                      child: Text(
+                        'Add data to firestore',
                         style: TextStyle(
                           fontFamily: "PoorStory",
                           fontSize: 16,

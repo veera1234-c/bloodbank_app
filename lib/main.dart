@@ -11,6 +11,7 @@ import 'package:bloodbank_app/screens/signup_screen.dart';
 import 'package:bloodbank_app/screens/splashscreen.dart';
 import 'package:bloodbank_app/screens/onboarding.dart';
 import 'package:bloodbank_app/screens/mobilenumber.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -19,11 +20,16 @@ import 'firebase_options.dart';
 import 'onboarding/Onboarding1.dart';
 import 'onboarding/Onboarding2.dart';
 
+bool shouldUseFirestoreEmulator = false;
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  if (shouldUseFirestoreEmulator) {
+    FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+  }
   runApp(const MyApp());
 }
 
