@@ -11,13 +11,19 @@ import 'package:bloodbank_app/screens/signup_screen.dart';
 import 'package:bloodbank_app/screens/splashscreen.dart';
 import 'package:bloodbank_app/screens/onboarding.dart';
 import 'package:bloodbank_app/screens/mobilenumber.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'constants/routes.dart';
+import 'firebase_options.dart';
 import 'onboarding/Onboarding1.dart';
 import 'onboarding/Onboarding2.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
