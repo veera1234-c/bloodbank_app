@@ -50,6 +50,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     prefs = await SharedPreferences.getInstance();
   }
 
+  String (newValue) => {
+    newValue!= null && newValue.isNotEmpty
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
