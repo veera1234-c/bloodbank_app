@@ -38,6 +38,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
   }
 
+  Future<void> readDataFromFirestore() async {
+    await db.collection("users").get().then(
+      (QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          print(doc.data());
+        });
+      },
+    );
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -48,11 +58,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   // declaring a function so that the initState can call it without asynchrony
   void onInit() async {
     prefs = await SharedPreferences.getInstance();
-  }
-
-  String (newValue) => {
-    newValue!= null && newValue.isNotEmpty
-    
   }
 
   @override
@@ -133,6 +138,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       child: Text(
                         'Add data to firestore',
+                        style: TextStyle(
+                          fontFamily: "PoorStory",
+                          fontSize: 16,
+                          color: MyColors.redPrimary,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: readDataFromFirestore,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            //to set border radius to button
+                            borderRadius: BorderRadius.circular(11)),
+                      ),
+                      child: Text(
+                        'Read data from firestore',
                         style: TextStyle(
                           fontFamily: "PoorStory",
                           fontSize: 16,

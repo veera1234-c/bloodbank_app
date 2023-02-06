@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Image.asset("bloodbank.png"),
+          child: Image.asset("assets/bloodbank.png"),
         ),
       ),
     );
