@@ -1,14 +1,28 @@
+import 'package:bloodbank_app/onboarding/Onboarding0.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+import '../constants/routes.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Future.delayed(
+      Duration(seconds: 3),
+      () => Navigator.pushNamed(context, Routes.onboardingScreen),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Splash Screen"),
-      ),
       body: SafeArea(
         child: Center(
           child: Image.asset("bloodbank.png"),
